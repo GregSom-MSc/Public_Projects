@@ -1,2 +1,3 @@
-# Project_Ideas_2023
-Take a Look, good ideas in place.
+# Public_Projects
+Take a Look, maybe a nice idea or exercise in place.
+Started: 2023
