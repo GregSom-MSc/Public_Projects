@@ -1,0 +1,5 @@
+Deliverable:
+- Fully functional API with Docker support.
+- Optional: Interactive dashboard.
+- Detailed README with usage instructions.
+
