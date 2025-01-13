@@ -1,3 +1,6 @@
 # Public_Projects
-Take a Look, maybe a nice idea or exercise in place.
+
+This is one of my project collections.
+Take a Look, maybe you'll find a nice idea or exercise to copy, learn and replicate.
+
 Started: 2023
