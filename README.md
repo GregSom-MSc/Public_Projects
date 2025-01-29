@@ -5,5 +5,5 @@ Take a Look, maybe you'll find a nice idea or exercise to copy, learn and replic
 
 Feel free to copy any file, don't forget to star the folder if it was valuable 🕶️
 
-**SGMS**
+**SGMS** <br>
 Started: 2023
