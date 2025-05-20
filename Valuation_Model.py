@@ -20,9 +20,9 @@ def generate_valuation_excel(filename="Valuation_Model.xlsx"):
     ''' 
     This function creates a complete Excel-based valuation model with three integrated sheets:
 
-    1. Assumptions - Contains all configurable model parameters
-    2. Valuation Model - Detailed calculations and projections over a 5-year period
-    3. Dashboard - Summary of key metrics and performance indicators
+    1. Assumptions - Contains configurable model parameters
+    2. Valuation Model - Generated calculations and projections over 5-year period
+    3. Dashboard - Simple summary of key metrics and performance indicators
 
     The model includes transaction assumptions, sources & uses of funds, financial projections,
     debt schedules, and exit analysis with IRR calculations.
@@ -30,47 +30,49 @@ def generate_valuation_excel(filename="Valuation_Model.xlsx"):
     Parameters:
     -----------
     filename : str, optional
-        The name of the Excel file to create. Default is "Valuation_Model.xlsx".
-        IMPORTANT: don't forget to include the .xlsx extension.
+        The name of the Excel file to create. Default: "Valuation_Model.xlsx".
+        IMPORTANT: Remember to include the .xlsx extension.
 
     Returns:
     --------
     None
         The function saves the Excel file to disk with the specified filename
-        and prints a confirmation message.
+        and prints a message confirming it.
 
     Examples:
     ---------
     >>> generate_valuation_excel()  # Creates "Valuation_Model.xlsx"
-    >>> generate_valuation_excel("PE_Deal_2025.xlsx")  # Creates custom named file
+    >>> generate_valuation_excel("PE_Deal_2025_SGMS.xlsx")  # Creates custom named file
 
     Notes:
     ------
-    - The model contains default assumptions that can be modified in the Assumptions sheet
-    - The financial projections span 5 years with configurable growth rates
-    - IRR calculation uses the XIRR function for more accurate returns analysis
+    - Default assumptions can be modified in the corresponding sheet
+    - Financial projections span 5 years, you can configure growth rates
+    - IRR calculation uses XIRR function for more accurate returns analysis
     - The model follows PE/M&A industry standard practices
-    SGMS
+
+    SGMS 2025
     '''
     # First, we create a new workbook in memory
     wb = xl.Workbook()
 
-    # Create Assumptions sheet
+    # Let's create sheets: Assumptions
     assumptions_sheet = wb.active
     assumptions_sheet.title = "Assumptions"
 
-    # Create Valuation Model sheet
+    # Let's create sheets: Model
     valuation_sheet = wb.create_sheet(title="Valuation Model")
 
-    # ----- ASSUMPTIONS SHEET -----
-    # Add headers
+    # ----- ASSUMPTIONS SHEET ------------------------------------------
+
+    # Adding headers
     assumptions_sheet['A1'] = "Valuation Model Assumptions"
     assumptions_sheet['A1'].font = Font(bold=True, size=14)
     assumptions_sheet['A1'].fill = PatternFill(fgColor="134074")
     assumptions_sheet.merge_cells('A1:C1')
     assumptions_sheet['A1'].alignment = Alignment(horizontal='center')
 
-    # Now, we define assumption categories and values
+    # Now, we define the sheet's categories and values
     assumptions_data = [
         ["Transaction Assumptions", "", ""],
         ["Purchase Price ($M)", "purchase_price", 100],
@@ -166,10 +168,11 @@ def generate_valuation_excel(filename="Valuation_Model.xlsx"):
     assumptions_sheet.column_dimensions['B'].width = 25
     assumptions_sheet.column_dimensions['C'].width = 15
 
-
+# -------------------------------------------------------------------------------------
 ######################################################################################
+
     # ----- VALUATION MODEL SHEET -----
-    # Set up structure for Valuation Model sheet
+    # Set up Valuation Model Structure
     sections = [
         {
             "title": "Transaction Assumptions",
@@ -343,7 +346,11 @@ def generate_valuation_excel(filename="Valuation_Model.xlsx"):
                            end_type='max', end_color='44FF44')
         )
 
-    # Add Dashboard sheet
+# -------------------------------------------------------------------------------------
+######################################################################################
+
+# ---- DASHBOARD SHEET -----
+    # Let's add Dashboard sheet
     dashboard_sheet = wb.create_sheet(title="Dashboard")
 
     # Add title
@@ -389,6 +396,8 @@ def generate_valuation_excel(filename="Valuation_Model.xlsx"):
     print(f"Valuation model generated: {filename}")
 
 
-# Run the function
+#################################################################################################################
+# Finally, our script will run the function and automatically create the excel blueprint to work on our Valuation:
+
 if __name__ == "__main__":
     generate_valuation_excel()
