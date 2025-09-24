@@ -13,6 +13,8 @@ def convert_to_ico(input_file, output_file=None):
     try:
         # Open the image
         img = Image.open(input_file)
+        if img.mode not in ("RGBA", "RGB"):
+            img = img.convert("RGBA")
 
         # If no output file provided, use same name with .ico
         if not output_file:
