@@ -21,9 +21,9 @@ def convert_to_ico(input_file, output_file=None):
             base = os.path.splitext(input_file)[0]
             output_file = base + ".ico"
 
-        # Save as ICO with multiple sizes
-        img.save(output_file, sizes=[
-                 (16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
+        # Save as ICO (resize to max 256x256)
+        img.thumbnail((256, 256), Image.Resampling.LANCZOS)
+        img.save(output_file, format='ICO')
         print(f"✅ Converted '{input_file}' → '{output_file}'")
 
     except Exception as e:
